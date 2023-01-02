@@ -1,6 +1,31 @@
 import { motion as m } from "framer-motion";
 
 export default function Home() {
+	const container = {
+		hidden: {
+			opacity: 0,
+		},
+		show: {
+			opacity: 1,
+			transition: {
+				delayChildren: 0.5,
+				staggerChildren: 0.5,
+			},
+		},
+	};
+
+	const item = {
+		hidden: {
+			y: "100%",
+		},
+		show: {
+			y: "0%",
+			transition: {
+				duration: 0.5,
+			},
+		},
+	};
+
 	return (
 		<m.div
 			initial={{ y: "100%" }}
@@ -32,11 +57,28 @@ export default function Home() {
 							<h2>2023</h2>
 						</div>
 					</div>
-					<div>
-						<h2>This pickle is gonna make you smile</h2>
-						<h2>Scottish design to make you happy</h2>
-						<h2>Click contact for cool transition</h2>
-					</div>
+					<m.div
+						variants={container}
+						initial="hidden"
+						animate="show"
+						className="overflow-hidden"
+					>
+						<div className="overflow-hidden">
+							<m.h2 variants={item}>
+								This pickle is gonna make you smile
+							</m.h2>
+						</div>
+						<div className="overflow-hidden">
+							<m.h2 variants={item}>
+								Scottish design to make you happy
+							</m.h2>
+						</div>
+						<div className="overflow-hidden">
+							<m.h2 variants={item}>
+								Click contact for cool transition
+							</m.h2>
+						</div>
+					</m.div>
 				</div>
 			</main>
 		</m.div>
