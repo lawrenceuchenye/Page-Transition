@@ -1,6 +1,31 @@
 import { motion as m } from "framer-motion";
 
 export default function contact() {
+	const container = {
+		hidden: {
+			opacity: 0,
+		},
+		show: {
+			opacity: 1,
+			transition: {
+				delayChildren: 0.5,
+				staggerChildren: 0.5,
+			},
+		},
+	};
+
+	const item = {
+		hidden: {
+			y: "100%",
+		},
+		show: {
+			y: "0%",
+			transition: {
+				duration: 0.5,
+			},
+		},
+	};
+
 	return (
 		<m.div
 			initial={{ y: "100%" }}
@@ -23,12 +48,28 @@ export default function contact() {
 					<h4>Find me:</h4>
 				</div>
 				<div className="lg:text-6xl text-2xl underline">
-					<ul>
-						<li className="pb-2">Twitter</li>
-						<li className="pb-2">Instagram</li>
-						<li className="pb-2">LinkedIn</li>
-						<li className="pb-2">Whatsapp</li>
-					</ul>
+					<m.ul variants={container} initial="hidden" animate="show">
+						<div className="overflow-hidden">
+							<m.li variants={item} className="pb-2">
+								Twitter
+							</m.li>
+						</div>
+						<div className="overflow-hidden">
+							<m.li variants={item} className="pb-2">
+								Instagram
+							</m.li>
+						</div>
+						<div className="overflow-hidden">
+							<m.li variants={item} className="pb-2">
+								LinkedIn
+							</m.li>
+						</div>
+						<div className="overflow-hidden">
+							<m.li variants={item} className="pb-2">
+								Whatsapp
+							</m.li>
+						</div>
+					</m.ul>
 				</div>
 			</div>
 		</m.div>
